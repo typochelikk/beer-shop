@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craft Beer — Эксклюзивный крафт</title>
+    <!-- Подключаем Bootstrap v4 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Подключаем ваш файл стилей -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ==================== ШАПКА САЙТА (NAVBAR) ==================== -->
+    <nav class="custom-navbar">
+        <div class="navbar-container">
+            <a class="logo-link" href="index.html">
+                <img src="img/logo.png" alt="Логотип" height="120">
+            </a>
+            <div class="menu-links">
+                <a href="index.html">Главная</a>
+                <a href="catalog.html">Каталог</a>
+                <a href="#">О нас</a>
+                <a href="#">Контакты</a>
+            </div>
+            <a href="order.html" class="cart-icon-link">🛒</a>
+            <form class="search-form">
+                <input type="search" placeholder="Поиск">
+                <button type="submit">Найти</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- ==================== ГЛАВНЫЙ БАННЕР ==================== -->
+    <header class="hero-section">
+        <!-- Блок с текстом (справа сверху) -->
+        <div class="hero-text-top-right">
+            <h1>Эксклюзивный крафт от лучших пивоварен</h1>
+            <p>Более 50 сортов IPA, Stout и Sour с доставкой на дом</p>
+        </div>
+        
+        <!-- Блок с кнопкой (снизу по центру) -->
+        <div class="hero-btn-bottom-center">
+            <a href="catalog.html" class="btn-catalog-large">Перейти в каталог</a>
+        </div>
+    </header>
+
+    <!-- ==================== КАРТОЧКИ ТОВАРОВ ==================== -->
+    <main class="container my-5">
+        <div class="row">
+            <!-- Карточка 1: Atomic IPA -->
+            <div class="col-md-3 mb-4">
+                <div class="card beer-card">
+                    <div class="card-img-container">
+                        <img src="img/ipa.png" class="beer-img" alt="Atomic IPA">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Atomic IPA</h5>
+                        <p class="card-text">Мощный индийский бледный эль с двойным сухоопливанием. Взрывная волна аромата тропических фруктов, цитрусов и выраженная хвойная горчинка в послевкусии.<br><br><strong>Характеристики: ABV: 6.5% | IBU: 60</strong></p>
+                        <a href="catalog.html" class="btn-buy text-center">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 2: Dark Stout -->
+            <div class="col-md-3 mb-4">
+                <div class="card beer-card">
+                    <div class="card-img-container">
+                        <img src="img/stout.png" class="beer-img" alt="Dark Stout">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Dark Stout</h5>
+                        <p class="card-text">Классический темный стаут, сваренный на глубоко обжаренном солоде. Обладает бархатистым вкусом с выраженными нотами горького шоколада, свежеобжаренного кофе и густой кремовой пенной шапкой.<br><br><strong>Характеристики: ABV: 5.8% | IBU: 30</strong></p>
+                        <a href="catalog.html" class="btn-buy text-center">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 3: Mango Sour -->
+            <div class="col-md-3 mb-4">
+                <div class="card beer-card">
+                    <div class="card-img-container">
+                        <img src="img/sour.png" class="beer-img" alt="Mango Sour">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Mango Sour</h5>
+                        <p class="card-text">Освежающий кислый эль с добавлением натурального пюре спелого манго. Яркий, сочный фруктовый аромат с приятной йогуртовой кислинкой, идеально спасающий в летний зной.<br><br><strong>Характеристики: ABV: 4.5% | IBU: 8</strong></p>
+                        <a href="catalog.html" class="btn-buy text-center">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 4: Dark Beer -->
+            <div class="col-md-3 mb-4">
+                <div class="card beer-card">
+                    <div class="card-img-container">
+                        <img src="img/dark.png" class="beer-img" alt="Dark Beer">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Dark Beer</h5>
+                        <p class="card-text">Традиционный темный лагер в немецком стиле (Dunkel). Сбалансированный, мягкий вкус с приятными карамельными и хлебными тонами без лишней хмелевой горечи.<br><br><strong>Характеристики: ABV: 5.0% | IBU: 15</strong></p>
+                        <a href="catalog.html" class="btn-buy text-center">Купить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ==================== ПОДВАЛ САЙТА (FOOTER) ==================== -->
+    <footer class="custom-footer text-white text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Магазин крафтового пива "Craft Beer". Чрезмерное употребление алкоголя вредит вашему здоровью</p>
+        </div>
+    </footer>
+
+</body>
+</html>

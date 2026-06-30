@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог — Страница 2</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ==================== ШАПКА САЙТА (NAVBAR) ==================== -->
+    <nav class="custom-navbar">
+        <div class="navbar-container">
+            <a class="logo-link" href="index.html">
+                <img src="img/logo.png" alt="Логотип" height="120">
+            </a>
+            <div class="menu-links">
+                <a href="index.html">Главная</a>
+                <a href="catalog.html">Каталог</a>
+                <a href="#">О нас</a>
+                <a href="#">Контакты</a>
+            </div>
+            <a href="order.html" class="cart-icon-link">🛒</a>
+            <form class="search-form">
+                <input type="search" placeholder="Поиск">
+                <button type="submit">Найти</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- ==================== ОСНОВНОЙ КОНТЕНТ ЗАКАЗА ==================== -->
+    <main class="order-main-container">
+        <div class="order-flex-row">
+            
+            <!-- Левый блок: Форма данных -->
+            <div class="order-left-column">
+                <form class="order-form">
+                    <div class="form-group-custom">
+                        <input type="text" placeholder="Введите ваше ФИО">
+                    </div>
+                    <div class="form-group-custom">
+                        <input type="tel" placeholder="Введите ваш номер">
+                    </div>
+                    <div class="form-group-custom">
+                        <input type="text" placeholder="Введите адрес">
+                    </div>
+                    <div class="form-group-custom">
+                        <select>
+                            <option value="" disabled selected>Выберите время доставки (с 11:00 до 22:00)</option>
+                            <option value="11-14">С 11:00 до 14:00</option>
+                            <option value="14-18">С 14:00 до 18:00</option>
+                            <option value="18-22">С 18:00 до 22:00</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Интерактивные кнопки переключения БЕЗ JavaScript -->
+                    <div class="delivery-toggle-pure-css">
+                        <input type="radio" id="toggle-delivery" name="delivery-type" checked>
+                        <label for="toggle-delivery" class="lbl-delivery">Доставка</label>
+
+                        <input type="radio" id="toggle-pickup" name="delivery-type">
+                        <label for="toggle-pickup" class="lbl-pickup">Самовывоз</label>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Правый блок: Чек заказа -->
+            <div class="order-right-column">
+                <div class="order-receipt-card">
+                    <div class="receipt-section font-weight-bold section-title">Ваш заказ:</div>
+                    <div class="receipt-section">
+                        <ul class="receipt-list mb-0">
+                            <li>Atomic IPA (320 руб.)</li>
+                            <li>Mango Sour (350 руб.)</li>
+                            <li>Double Horizon (390 руб.)</li>
+                        </ul>
+                    </div>
+                    <div class="receipt-section font-weight-bold">Доставка: 300 руб.</div>
+                    <div class="receipt-section font-weight-bold text-dark-brown">Итого: 1360 руб.</div>
+                </div>
+            </div>
+
+        </div> <!-- Конец строки order-flex-row -->
+
+        <!-- Кнопка ЗАКАЗАТЬ строго под правым блоком -->
+        <div class="order-btn-row">
+            <button type="submit" class="btn-submit-order-large">ЗАКАЗАТЬ</button>
+        </div>
+
+    </main>
+
+    <!-- ==================== ПОДВАЛ САЙТА (FOOTER) ==================== -->
+    <footer class="custom-footer text-white text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Магазин крафтового пива "Craft Beer". Чрезмерное употребление алкоголя вредит вашему здоровью</p>
+        </div>
+    </footer>
+
+</body>
+</html>

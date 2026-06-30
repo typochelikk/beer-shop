@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craft Beer — Эксклюзивный крафт</title>
+    <!-- Подключаем Bootstrap v4 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Подключаем ваш файл стилей -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ==================== ШАПКА САЙТА (NAVBAR) ==================== -->
+    <nav class="custom-navbar">
+        <div class="navbar-container">
+            <a class="logo-link" href="index.html">
+                <img src="img/logo.png" alt="Логотип" height="120">
+            </a>
+            <div class="menu-links">
+                <a href="index.html">Главная</a>
+                <a href="catalog.html">Каталог</a>
+                <a href="#">О нас</a>
+                <a href="#">Контакты</a>
+            </div>
+            <a href="order.html" class="cart-icon-link">🛒</a>
+            <form class="search-form">
+                <input type="search" placeholder="Поиск">
+                <button type="submit">Найти</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- ==================== ОСНОВНОЙ КОНТЕНТ КАТАЛОГА ==================== -->
+    <main class="container my-5">
+        <div class="row">
+            
+            <!-- Левая колонка: Панель фильтров (занимает 3 колонки Bootstrap) -->
+            <aside class="col-md-3 mb-4">
+                <div class="filter-panel p-4 text-white">
+                    <h4 class="font-weight-bold mb-4">Стиль пива</h4>
+                    
+                    <div class="filter-checkbox mb-2">
+                        <input type="checkbox" id="ipa">
+                        <label for="ipa">IPA (Индийский эль)</label>
+                    </div>
+                    <div class="filter-checkbox mb-2">
+                        <input type="checkbox" id="stout">
+                        <label for="stout">Stout (Стаут)</label>
+                    </div>
+                    <div class="filter-checkbox mb-2">
+                        <input type="checkbox" id="sour">
+                        <label for="sour">Sour Ale (Кислый эль)</label>
+                    </div>
+                    <div class="filter-checkbox mb-4">
+                        <input type="checkbox" id="lager">
+                        <label for="lager">Dark Lager (Лагер)</label>
+                    </div>
+
+                    <h4 class="font-weight-bold mb-3">Крепость (ABV)</h4>
+                    <div class="filter-radio mb-2">
+                        <!-- input type="radio" и общее имя name="abv-group" запретят нажимать две кнопки одновременно -->
+                        <input type="radio" id="abv-light" name="abv-group" value="light">
+                        <label for="abv-light">Легкое (до 5%)</label>
+                    </div>
+                    <div class="filter-radio mb-4">
+                        <input type="radio" id="abv-strong" name="abv-group" value="strong">
+                        <label for="abv-strong">Крепкое (более 5%)</label>
+                    </div>
+                    <!-- Добавим кнопку сброса крепости, чтобы можно было снова увидеть всё пиво -->
+                    <div class="filter-radio mb-2">
+                        <input type="radio" id="abv-all" name="abv-group" value="all" checked>
+                        <label for="abv-all">Все сорта</label>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Правая колонка: Сетка товаров (занимает 9 колонок Bootstrap) -->
+            <section class="col-md-9">
+                <div class="row">
+                    <!-- Карточка 1: Atomic IPA -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card beer-card">
+                            <div class="card-img-container"><img src="img/ipa.png" class="beer-img" alt="Atomic IPA"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Atomic IPA</h5>
+                                <p class="card-text">Мощный индийский бледный эль с двойным сухоопливанием. Взрывная волна аромата тропических фруктов, цитрусов и выраженная хвойная горчинка в послевкусии.<br><br><strong>Характеристики: ABV: 6.5% | IBU: 60</strong></p>
+                                <a href="order.html" class="btn-buy btn-buy-center">Купить за 320 руб.</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Карточка 2: Dark Stout -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card beer-card">
+                            <div class="card-img-container"><img src="img/stout.png" class="beer-img" alt="Dark Stout"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Dark Stout</h5>
+                                <p class="card-text">Классический темный стаут, сваренный на глубоко обжаренном солоде. Обладает бархатистым вкусом с выраженными нотами горького шоколада, свежеобжаренного кофе и густой кремовой пенной шапкой.<br><br><strong>Характеристики: ABV: 5.8% | IBU: 30</strong></p>
+                                <a href="order.html" class="btn-buy btn-buy-center">Купить за 290 руб.</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Карточка 3: Mango Sour -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card beer-card">
+                            <div class="card-img-container"><img src="img/sour.png" class="beer-img" alt="Mango Sour"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Mango Sour</h5>
+                                <p class="card-text">Освежающий кислый эль с добавлением натурального пюре спелого манго. Яркий, сочный фруктовый аромат с приятной йогуртовой кислинкой, идеально спасающий в летний зной.<br><br><strong>Характеристики: ABV: 4.5% | IBU: 8</strong></p>
+                                <a href="order.html" class="btn-buy btn-buy-center">Купить за 350 руб.</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Карточка 4: Dark Beer -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card beer-card">
+                            <div class="card-img-container"><img src="img/dark.png" class="beer-img" alt="Dark Beer"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Dark Beer</h5>
+                                <p class="card-text">Традиционный темный лагер в немецком стиле (Dunkel). Сбалансированный, мягкий вкус с приятными карамельными и хлебными тонами без лишней хмелевой горечи.<br><br><strong>Характеристики: ABV: 5.0% | IBU: 15</strong></p>
+                                <a href="order.html" class="btn-buy btn-buy-center">Купить за 260 руб.</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Карточка 5: Hoopy Blanche -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card beer-card">
+                            <div class="card-img-container"><img src="img/blanche.png" class="beer-img" alt="Hoopy Blanche"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Hoopy Blanche</h5>
+                                <p class="card-text">Легкое нефильтрованное пшеничное пиво. Обладает мягким пряным ароматом с нотками кориандра, цедры апельсина и свежего хлебного мякиша. Очень питкое и освежающее.<br><br><strong>Характеристики: ABV: 4.8% | IBU: 12</strong></p>
+                                <a href="order.html" class="btn-buy btn-buy-center">Купить за 280 руб.</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Карточка 6: Double Horizon -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card beer-card">
+                            <div class="card-img-container"><img src="img/horizon.png" class="beer-img" alt="Double Horizon"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Double Horizon</h5>
+                                <p class="card-text">Бескомпромиссный Двойной IPA для ценителей. Плотное солодовое тело скрывает высокую крепость, раскрываясь смолистыми, цитрусовыми и грейпфрутовыми оттенками американских хмелей.<br><br><strong>Характеристики: ABV: 8.2% | IBU: 85</strong></p>
+                                <a href="order.html" class="btn-buy btn-buy-center">Купить за 390 руб.</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== ВЫБОР СТРАНИЦ (ПАГИНАЦИЯ НА СТРАНИЦЕ 1) ==================== -->
+                <div class="custom-pagination mt-5">
+                    <a href="catalog.html">&laquo;</a>
+                    <a href="catalog.html" class="active">1</a>
+                    <a href="catalog-2.html">2</a> <!-- Ссылка ведет на наш новый файл -->
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="catalog-2.html">&raquo;</a>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- ==================== ПОДВАЛ САЙТА (FOOTER) ==================== -->
+    <footer class="custom-footer text-white text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Магазин крафтового пива "Craft Beer". Чрезмерное употребление алкоголя вредит вашему здоровью</p>
+        </div>
+    </footer>
+
+</body>
+</html>

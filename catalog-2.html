@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог — Страница 2</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ==================== ШАПКА САЙТА (NAVBAR) ==================== -->
+    <nav class="custom-navbar">
+        <div class="navbar-container">
+            <a class="logo-link" href="index.html">
+                <img src="img/logo.png" alt="Логотип" height="120">
+            </a>
+            <div class="menu-links">
+                <a href="index.html">Главная</a>
+                <a href="catalog.html">Каталог</a>
+                <a href="#">О нас</a>
+                <a href="#">Контакты</a>
+            </div>
+            <a href="order.html" class="cart-icon-link">🛒</a>
+            <form class="search-form">
+                <input type="search" placeholder="Поиск">
+                <button type="submit">Найти</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- ==================== ОСНОВНОЙ КОНТЕНТ КАТАЛОГА ==================== -->
+    <main class="container my-5">
+        <div class="row">
+            
+            <!-- Левая колонка: Панель фильтров (занимает 3 колонки Bootstrap) -->
+            <aside class="col-md-3 mb-4">
+                <div class="filter-panel p-4 text-white">
+                    <h4 class="font-weight-bold mb-4">Стиль пива</h4>
+                    
+                    <div class="filter-checkbox mb-2">
+                        <input type="checkbox" id="ipa">
+                        <label for="ipa">IPA (Индийский эль)</label>
+                    </div>
+                    <div class="filter-checkbox mb-2">
+                        <input type="checkbox" id="stout">
+                        <label for="stout">Stout (Стаут)</label>
+                    </div>
+                    <div class="filter-checkbox mb-2">
+                        <input type="checkbox" id="sour">
+                        <label for="sour">Sour Ale (Кислый эль)</label>
+                    </div>
+                    <div class="filter-checkbox mb-4">
+                        <input type="checkbox" id="lager">
+                        <label for="lager">Dark Lager (Лагер)</label>
+                    </div>
+
+                    <h4 class="font-weight-bold mb-3">Крепость (ABV)</h4>
+                    <div class="filter-radio mb-2">
+                        <!-- input type="radio" и общее имя name="abv-group" запретят нажимать две кнопки одновременно -->
+                        <input type="radio" id="abv-light" name="abv-group" value="light">
+                        <label for="abv-light">Легкое (до 5%)</label>
+                    </div>
+                    <div class="filter-radio mb-4">
+                        <input type="radio" id="abv-strong" name="abv-group" value="strong">
+                        <label for="abv-strong">Крепкое (более 5%)</label>
+                    </div>
+                    <!-- Добавим кнопку сброса крепости, чтобы можно было снова увидеть всё пиво -->
+                    <div class="filter-radio mb-2">
+                        <input type="radio" id="abv-all" name="abv-group" value="all" checked>
+                        <label for="abv-all">Все сорта</label>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Правая колонка: Сетка товаров (3 новых сорта) -->
+            <section class="col-md-9">
+                <div class="row">
+                    <!-- Карточка 7: Pacific APA -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card beer-card">
+                            <div class="card-img-container"><img src="img/apa-new.png" class="beer-img" alt="Pacific APA"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Pacific APA</h5>
+                                <p class="card-text">Классический американский бледный эль. Легкое солодовое тело с ярким ароматом цитрусов, хвои и тропических фруктов.<br><br><strong>Характеристики: ABV: 5.2% | IBU: 35</strong></p>
+                                <a href="order.html" class="btn-buy btn-buy-center">Купить за 310 руб.</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Карточка 8: Ruby Quad -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card beer-card">
+                            <div class="card-img-container"><img src="img/quad.png" class="beer-img" alt="Ruby Quad"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Ruby Quad</h5>
+                                <p class="card-text">Тяжелый бельгийский квадрюпель. Насыщенный согревающий вкус с глубокими нотами изюма, чернослива, инжира и карамели.<br><br><strong>Характеристики: ABV: 10.5% | IBU: 25</strong></p>
+                                <a href="order.html" class="btn-buy btn-buy-center">Купить за 420 руб.</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Карточка 9: Berry Gose -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card beer-card">
+                            <div class="card-img-container"><img src="img/gose.png" class="beer-img" alt="Berry Gose"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Berry Gose</h5>
+                                <p class="card-text">Традиционное немецкое кисло-соленое пиво с добавлением сока спелой лесной малины и легким щепоточным послевкусием морской соли.<br><br><strong>Характеристики: ABV: 4.2% | IBU: 5</strong></p>
+                                <a href="order.html" class="btn-buy btn-buy-center">Купить за 340 руб.</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== ПАГИНАЦИЯ ДЛЯ СТРАНИЦЫ 2 ==================== -->
+                <div class="custom-pagination mt-5">
+                    <a href="catalog.html">&laquo;</a>
+                    <a href="catalog.html">1</a>
+                    <a href="catalog-2.html" class="active">2</a> <!-- Теперь активная двойка -->
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">&raquo;</a>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- ==================== ПОДВАЛ САЙТА ==================== -->
+    <footer class="custom-footer text-white text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Магазин крафтового пива "Craft Beer". Чрезмерное употребление алкоголя вредит вашему здоровью</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,519 @@
+/* ==================== ОБЩИЕ СТИЛИ И ФОНЫ ==================== */
+body {
+    background-color: #dcbfa6;
+    background-image: url('../img/main-bg.jpg'); /* Подключаем дерево на фон */
+    background-attachment: fixed; /* Фон не будет прокручиваться вместе с текстом */
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    
+    margin: 0 !important;
+    padding: 0 !important;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Минимальная высота сайта равна полной высоте экрана */
+}
+
+/* Разрешаем сайту растягиваться на всю ширину экрана */
+.container {
+    max-width: 95% !important; /* Сайт займет 95% ширины любого монитора */
+    width: 100%;
+}
+
+/* ==================== ШАПКА САЙТА (NAVBAR) ==================== */
+.custom-navbar {
+    background-color: #A77256 !important;
+    padding: 1px 0; /* Минимальные отступы сверху и снизу */
+    width: 100%;
+    border-bottom: 2px solid #331f18;
+    min-height: auto !important; /* Убираем жесткие ограничения высоты */
+}
+
+.navbar-container {
+    max-width: 95% !important; /* Растягиваем шапку на 95% ширины экрана, как и карточки */
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px 0 0 !important;
+}
+
+.menu-links {
+    display: flex;
+    justify-content: space-around; /* Равномерно распределяет отступы между ссылками */
+    flex-grow: 1; /* Заставляет меню занять всё свободное место между логотипом и поиском */
+    max-width: 50%; /* Ограничиваем максимальную ширину меню, чтобы ссылки не улетали слишком далеко друг от друга */
+    margin: 0 auto; /* Центрирует весь блок ссылок */
+}
+
+.menu-links a {
+    color: #500C00 !important;
+    font-size: 1.15rem;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap; /* Запрещает переносить слова меню на новую строчку */
+}
+
+.menu-links a:hover {
+    color: #6d1101 !important;
+    text-decoration: none;
+}
+
+.search-form {
+    display: flex;
+}
+
+.search-form input {
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px 0 0 6px;
+    width: 300px;
+    font-size: 1.1rem; /* Увеличили размер текста внутри поля */
+}
+
+.search-form button {
+    background-color: #edd3c4;
+    color: #500C00;
+    border: none;
+    font-weight: bold;
+    font-size: 1.1rem; /* Увеличили шрифт на кнопке */
+    padding: 12px 30px;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+}
+
+/* Настройка увеличенного логотипа */
+.logo-link img {
+    display: block;
+    max-height: 100% !important;
+    width: auto; /* Сохраняет пропорции ширины при увеличении высоты */
+}
+
+/* Стили для иконки корзины в шапке */
+.cart-icon-link {
+    font-size: 2.2rem; /* Делаем значок крупным */
+    text-decoration: none !important;
+    margin-right: 25px; /* Отодвигаем её от строки поиска */
+    cursor: pointer;
+    transition: transform 0.2s; /* Плавное увеличение при наведении */
+    display: inline-block;
+}
+
+.cart-icon-link:hover {
+    transform: scale(1.15); /* Корзина будет приятно покачиваться при наведении */
+}
+
+/* ==================== ГЛАВНЫЙ БАННЕР (HERO) ==================== */
+.hero-section {
+    background-image: url('../img/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 480px;
+    position: relative; /* Позволяет свободно двигать элементы внутри */
+    width: 100%;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* Позиционируем текст строго справа сверху */
+.hero-text-top-right {
+    position: absolute;
+    top: -30px;        /* Было 25px — подняли в самый верх */
+    right: 2%;        /* Было 5% — прижали вплотную к правому краю */
+    text-align: right;
+    max-width: 850px; /* Немного расширили блок, чтобы текст не переносился слишком рано */
+}
+
+.hero-text-top-right h1 {
+    font-size: 3.7rem; /* Еще немного увеличили заголовок */
+    color: #500C00;
+    font-weight: bold;
+    line-height: 1.05;
+    margin-bottom: 2px;
+}
+
+.hero-text-top-right p {
+    font-size: 1.3rem;
+    color: #500C00;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Позиционируем кнопку строго снизу по центру */
+.hero-btn-bottom-center {
+    position: absolute;
+    bottom: 35px; /* Отступ от нижнего края баннера */
+    left: 50%;
+    transform: translateX(-50%); /* Идеальное центрирование по горизонтали */
+    width: 100%;
+    text-align: center;
+}
+
+/* Делаем кнопку по-настоящему гигантской */
+.btn-catalog-large {
+    background-color: #500C00;
+    color: #DBA87B !important;
+    border-radius: 15px;      /* Чуть больше скругление для массивности */
+    font-size: 2.3rem;        /* Было 1.8rem — теперь шрифт огромный */
+    font-weight: normal;
+    padding: 50px 100px;      /* Было 18px 90px — увеличили подушку вокруг текста в 1.5 раза */
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.2s;
+}
+
+.btn-catalog-large:hover {
+    background-color: #DBA87B;
+    color: #500C00 !important;
+    text-decoration: none;
+    border: 2px solid #500C00;
+    border-radius: 18px;
+}
+
+/* ==================== КАРТОЧКИ ТОВАРОВ ==================== */
+.beer-card {
+    background-color: #DBA87B !important;
+    border: 2px solid #DBA87B !important;
+    border-radius: 4px !important;
+    overflow: hidden;
+    height: 560px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 !important;
+    
+    /* Добавьте эту строчку, чтобы карточки сами растягивались по ширине колонки: */
+    width: 100% !important; 
+}
+
+/* Верхняя темно-коричневая половина карточки */
+.card-img-container {
+    background-color: #500C00 !important; 
+    padding: 20px 0 !important;
+    text-center: center;
+}
+
+/* Белый круг для бутылки */
+.beer-img {
+    background-color: #fff;
+    border-radius: 50%;
+    width: 160px !important; /* Увеличили со 140px до 160px */
+    height: 160px !important; /* Увеличили со 140px до 160px */
+    object-fit: scale-down !important;
+    image-rendering: -webkit-optimize-contrast;
+    padding: 15px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Контентная нижняя часть карточки */
+.card-body {
+    padding: 15px !important; /* Немного уменьшаем отступы внутри, освобождая место */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Это свойство железно прижмет кнопку к самому низу */
+    flex-grow: 1;
+}
+
+.card-title {
+    color: #4a2f25 !important; /* Темный заголовок */
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.card-text {
+    color: #331f18 !important;
+    font-size: 1.10rem;
+    line-height: 1.4;
+    margin-bottom: 15px;
+
+    min-height: 180px !important; 
+}
+
+/* Маленькая аккуратная кнопка «Купить» слева */
+.btn-buy {
+    background-color: #500C00 !important;
+    color: #DBA87B !important;
+    border-radius: 6px !important;
+    font-weight: bold;
+    font-size: 1.1rem; /* Чуть-чуть уменьшили шрифт, чтобы длинный текст влез на любых экранах */
+    border: none;
+    padding: 12px 25px !important; /* Уменьшили боковые отступы до 25px, чтобы кнопка не была слишком гигантской */
+    width: max-content !important; /* Кнопка идеально растянется строго под длину текста */
+    align-self: flex-start;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-decoration: none !important;
+    text-align: center;
+}
+
+.btn-buy:hover {
+    background-color: #DBA87B !important;
+    color: #500C00 !important;
+    border: 2px solid #500C00;
+    border-radius: 12px;
+}
+
+/* ==================== ПОДВАЛ (FOOTER) ==================== */
+.custom-footer {
+    background-color: #A77256;
+    color: #500C00 !important;
+    font-size: 0.9rem;
+    border: none !important;
+    width: 100% !important; /* Растягиваем подвал на 100% без зазоров */
+    margin: 0 !important;   /* Убираем любые внешние отступы */
+}
+
+
+
+
+
+/* ==================== СТРАНИЦА КАТАЛОГА =========================================================================================================================== */
+
+/* Стили для панели фильтров в каталоге */
+.filter-panel {
+    background-color: #DBA87B;
+    border: 2px solid #331f18;
+    border-radius: 6px;
+
+    padding: 25px 25px 35px 25px !important; 
+}
+
+/* Меняем цвет для заголовков "Стиль пива" и "Крепость" */
+.filter-panel h4 {
+    color: #4a2f25 !important; /* Бежевый цвет */
+}
+
+.filter-checkbox input {
+    cursor: pointer;
+    margin-right: 8px;
+    transform: scale(1.2); /* Делаем квадратики чекбоксов чуть крупнее */
+}
+.filter-checkbox label {
+    cursor: pointer;
+    font-size: 1rem;
+    color: #331f18;
+}
+
+/* Центрируем кнопку «Купить» только на странице каталога */
+.btn-buy-center {
+    align-self: center !important;
+}
+
+/* Стили для выбора страниц (пагинация) */
+.custom-pagination {
+    display: flex;
+    justify-content: center;
+    background-color: #d6a376; /* Бежево-рыжий фон плашки */
+    border: 2px solid #500C00;
+    border-radius: 6px;
+    overflow: hidden;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.custom-pagination a {
+    color: #500C00 !important;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 12px 35px;
+    text-decoration: none !important;
+    border-right: 1px solid #500C00;
+    transition: background-color 0.2s;
+}
+
+/* Удаляем рамку у последнего элемента */
+.custom-pagination a:last-child {
+    border-right: none;
+}
+
+/* Эффект при наведении и активная страница */
+.custom-pagination a:hover, 
+.custom-pagination a.active {
+    background-color: #500C00;
+    color: #d6a376 !important;
+}
+
+/* Стили для круглых кнопок крепости */
+.filter-radio input {
+    cursor: pointer;
+    margin-right: 8px;
+    transform: scale(1.2); /* Делаем кружочки крупнее, под стать чекбоксам */
+}
+.filter-radio label {
+    cursor: pointer;
+    font-size: 1rem;
+    color: #331f18;
+}
+
+
+
+
+
+/* ==================== СТИЛИ СТРАНИЦЫ ОФОРМЛЕНИЯ ЗАКАЗА =========================================================================================================================== */
+
+.order-main-container {
+    max-width: 95% !important;
+    width: 100%;
+    margin: 50px auto !important;
+
+    flex-grow: 1;
+}
+
+/* Выравниваем левую и правую части по краям */
+.order-flex-row {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 5%;
+    width: 100%;
+}
+
+.order-left-column {
+    width: 45%;
+}
+
+.order-right-column {
+    width: 50%;
+}
+
+/* Поля ввода формы */
+.form-group-custom {
+    margin-bottom: 25px;
+}
+
+.form-group-custom input,
+.form-group-custom select {
+    width: 100%;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    color: #4a2f25;
+    background-color: #fff;
+    outline: none;
+}
+
+.form-group-custom select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='none' stroke='%234a2f25' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    background-size: 16px;
+    cursor: pointer;
+}
+
+.delivery-toggle-pure-css {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.delivery-toggle-pure-css input[type="radio"] {
+    display: none;
+}
+
+/* Делаем из текстовых подписей (label) красивые прямоугольные кнопки */
+.delivery-toggle-pure-css label {
+    flex: 1;
+    padding: 15px 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #d6a376;
+    color: #500C00;
+    border: 2px solid #500C00;
+    transition: all 0.2s;
+    margin: 0;
+}
+
+/* Стили для кнопки, если выбран переключатель "Доставка" */
+#toggle-delivery:checked ~ .lbl-delivery {
+    background-color: #500C00;
+    color: #d6a376;
+    border: 2px solid #d6a376;
+}
+
+/* Стили для кнопки, если выбран переключатель "Самовывоз" */
+#toggle-pickup:checked ~ .lbl-pickup {
+    background-color: #500C00;
+    color: #d6a376;
+    border: 2px solid #d6a376;
+}
+
+/* Правая карточка-чек */
+.order-receipt-card {
+    background-color: #fff;
+    border-radius: 4px;
+    border: 2px solid #ced4da;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.receipt-section {
+    padding: 25px;
+    border-bottom: 1px solid #ced4da;
+    font-size: 1.15rem;
+    color: #331f18;
+}
+
+.receipt-section:last-child {
+    border-bottom: none;
+}
+
+.section-title {
+    font-size: 1.3rem;
+}
+
+.receipt-list {
+    padding-left: 20px;
+    color: #4a3629;
+}
+
+.receipt-list li {
+    margin-bottom: 8px;
+}
+
+.text-dark-brown {
+    color: #4a2f25 !important;
+}
+
+/* Ряд с большой кнопкой ЗАКАЗАТЬ (сдвигаем её в правый блок под чек) */
+.order-btn-row {
+    display: flex;
+    justify-content: flex-end; /* Улетает в правый край экрана */
+    width: 100%;
+    margin-top: 30px;
+}
+
+.btn-submit-order-large {
+    background-color: #500C00;
+    color: #d6a376;
+    width: 50%; /* Ширина кнопки теперь в точности равна ширине блока чека заказа */
+    padding: 22px 0;
+    font-size: 1.6rem;
+    font-weight: normal;
+    letter-spacing: 2px;
+    border: 2px solid #d6a376;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: background-color 0.2s;
+}
+
+.btn-submit-order-large:hover {
+    background-color: #d6a376;
+    color: #500C00;
+    border: 2px solid #500C00;
+    border-radius: 12px;
+}
+
+main {
+    flex-grow: 1; /* Растягивает центральную часть на всех страницах */
+}
