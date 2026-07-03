@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог — Страница 2</title>
+    <title>Оформление заказа — Craft Beer</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -35,15 +35,15 @@
             
             <!-- Левый блок: Форма данных -->
             <div class="order-left-column">
-                <form class="order-form">
+                <form class="order-form" id="order-form">
                     <div class="form-group-custom">
-                        <input type="text" placeholder="Введите ваше ФИО">
+                        <input type="text" id="user-fio" placeholder="Введите ваше ФИО">
                     </div>
                     <div class="form-group-custom">
-                        <input type="tel" placeholder="Введите ваш номер">
+                        <input type="tel" id="user-phone" placeholder="Введите ваш номер">
                     </div>
                     <div class="form-group-custom">
-                        <input type="text" placeholder="Введите адрес">
+                        <input type="text" id="user-address" placeholder="Введите адрес">
                     </div>
                     <div class="form-group-custom">
                         <select>
@@ -70,14 +70,12 @@
                 <div class="order-receipt-card">
                     <div class="receipt-section font-weight-bold section-title">Ваш заказ:</div>
                     <div class="receipt-section">
-                        <ul class="receipt-list mb-0">
-                            <li>Atomic IPA (320 руб.)</li>
-                            <li>Mango Sour (350 руб.)</li>
-                            <li>Double Horizon (390 руб.)</li>
+                        <ul class="receipt-list mb-0" id="cart-items-list">
+                            <!-- Сюда JavaScript добавит выбранное пиво -->
                         </ul>
                     </div>
-                    <div class="receipt-section font-weight-bold">Доставка: 300 руб.</div>
-                    <div class="receipt-section font-weight-bold text-dark-brown">Итого: 1360 руб.</div>
+                    <div class="receipt-section font-weight-bold" id="receipt-delivery">Доставка: 0 руб.</div>
+                    <div class="receipt-section font-weight-bold text-dark-brown" id="receipt-total">Итого: 0 руб.</div>
                 </div>
             </div>
 
@@ -90,6 +88,27 @@
 
     </main>
 
+<!-- Модальное окно Bootstrap для вывода сообщений -->
+<div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" style="background-color: #edd3c4; border: 2px solid #4a2f25;">
+      <div class="modal-header" style="border-bottom: 1px solid #4a2f25;">
+        <h5 class="modal-title font-weight-bold" id="modalTitle" style="color: #4a2f25;">Статус заказа</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color: #4a2f25;">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center font-weight-bold" id="modalBody" style="color: #331f18; font-size: 1.2rem;">
+        <!-- Сюда JavaScript будет подставлять текст -->
+      </div>
+      <div class="modal-footer" style="border-top: none;">
+        <!-- Изменили класс кнопки здесь: -->
+        <button type="button" class="btn-modal-close py-2 px-4" data-dismiss="modal" style="margin: 0 auto;">Отлично</button>
+      </div>
+    </div>
+  </div>
+</div>
+
     <!-- ==================== ПОДВАЛ САЙТА (FOOTER) ==================== -->
     <footer class="custom-footer text-white text-center py-4 mt-5">
         <div class="container">
@@ -97,5 +116,6 @@
         </div>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>

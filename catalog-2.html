@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог — Страница 2</title>
+    <title>Каталог — Craft Beer</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -22,8 +22,8 @@
                 <a href="#">Контакты</a>
             </div>
             <a href="order.html" class="cart-icon-link">🛒</a>
-            <form class="search-form">
-                <input type="search" placeholder="Поиск">
+            <form class="search-form" onsubmit="event.preventDefault();">
+                <input type="search" id="beer-search" placeholder="Поиск">
                 <button type="submit">Найти</button>
             </form>
         </div>
@@ -83,7 +83,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Pacific APA</h5>
                                 <p class="card-text">Классический американский бледный эль. Легкое солодовое тело с ярким ароматом цитрусов, хвои и тропических фруктов.<br><br><strong>Характеристики: ABV: 5.2% | IBU: 35</strong></p>
-                                <a href="order.html" class="btn-buy btn-buy-center">Купить за 310 руб.</a>
+                                <button class="btn-buy btn-buy-center" data-name="Pacific APA" data-price="310">Купить за 310 руб.</button>
                             </div>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Ruby Quad</h5>
                                 <p class="card-text">Тяжелый бельгийский квадрюпель. Насыщенный согревающий вкус с глубокими нотами изюма, чернослива, инжира и карамели.<br><br><strong>Характеристики: ABV: 10.5% | IBU: 25</strong></p>
-                                <a href="order.html" class="btn-buy btn-buy-center">Купить за 420 руб.</a>
+                                <button class="btn-buy btn-buy-center" data-name="Ruby Quad" data-price="420">Купить за 420 руб.</button>
                             </div>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Berry Gose</h5>
                                 <p class="card-text">Традиционное немецкое кисло-соленое пиво с добавлением сока спелой лесной малины и легким щепоточным послевкусием морской соли.<br><br><strong>Характеристики: ABV: 4.2% | IBU: 5</strong></p>
-                                <a href="order.html" class="btn-buy btn-buy-center">Купить за 340 руб.</a>
+                                <button class="btn-buy btn-buy-center" data-name="Berry Gose" data-price="340">Купить за 340 руб.</button>
                             </div>
                         </div>
                     </div>
@@ -135,5 +135,6 @@
         </div>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>

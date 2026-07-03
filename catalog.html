@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Craft Beer — Эксклюзивный крафт</title>
+    <title>Каталог — Craft Beer</title>
     <!-- Подключаем Bootstrap v4 -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Подключаем ваш файл стилей -->
@@ -24,8 +24,8 @@
                 <a href="#">Контакты</a>
             </div>
             <a href="order.html" class="cart-icon-link">🛒</a>
-            <form class="search-form">
-                <input type="search" placeholder="Поиск">
+            <form class="search-form" onsubmit="event.preventDefault();">
+                <input type="search" id="beer-search" placeholder="Поиск">
                 <button type="submit">Найти</button>
             </form>
         </div>
@@ -85,7 +85,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Atomic IPA</h5>
                                 <p class="card-text">Мощный индийский бледный эль с двойным сухоопливанием. Взрывная волна аромата тропических фруктов, цитрусов и выраженная хвойная горчинка в послевкусии.<br><br><strong>Характеристики: ABV: 6.5% | IBU: 60</strong></p>
-                                <a href="order.html" class="btn-buy btn-buy-center">Купить за 320 руб.</a>
+                                <button class="btn-buy btn-buy-center" data-name="Atomic IPA" data-price="320">Купить за 320 руб.</button>
                             </div>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Dark Stout</h5>
                                 <p class="card-text">Классический темный стаут, сваренный на глубоко обжаренном солоде. Обладает бархатистым вкусом с выраженными нотами горького шоколада, свежеобжаренного кофе и густой кремовой пенной шапкой.<br><br><strong>Характеристики: ABV: 5.8% | IBU: 30</strong></p>
-                                <a href="order.html" class="btn-buy btn-buy-center">Купить за 290 руб.</a>
+                                <button class="btn-buy btn-buy-center" data-name="Dark Stout" data-price="290">Купить за 290 руб.</button>
                             </div>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Mango Sour</h5>
                                 <p class="card-text">Освежающий кислый эль с добавлением натурального пюре спелого манго. Яркий, сочный фруктовый аромат с приятной йогуртовой кислинкой, идеально спасающий в летний зной.<br><br><strong>Характеристики: ABV: 4.5% | IBU: 8</strong></p>
-                                <a href="order.html" class="btn-buy btn-buy-center">Купить за 350 руб.</a>
+                                <button class="btn-buy btn-buy-center" data-name="Mango Sour" data-price="350">Купить за 350 руб.</button>
                             </div>
                         </div>
                     </div>
@@ -121,7 +121,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Dark Beer</h5>
                                 <p class="card-text">Традиционный темный лагер в немецком стиле (Dunkel). Сбалансированный, мягкий вкус с приятными карамельными и хлебными тонами без лишней хмелевой горечи.<br><br><strong>Характеристики: ABV: 5.0% | IBU: 15</strong></p>
-                                <a href="order.html" class="btn-buy btn-buy-center">Купить за 260 руб.</a>
+                                <button class="btn-buy btn-buy-center" data-name="Dark Beer" data-price="260">Купить за 260 руб.</button>
                             </div>
                         </div>
                     </div>
@@ -133,7 +133,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Hoopy Blanche</h5>
                                 <p class="card-text">Легкое нефильтрованное пшеничное пиво. Обладает мягким пряным ароматом с нотками кориандра, цедры апельсина и свежего хлебного мякиша. Очень питкое и освежающее.<br><br><strong>Характеристики: ABV: 4.8% | IBU: 12</strong></p>
-                                <a href="order.html" class="btn-buy btn-buy-center">Купить за 280 руб.</a>
+                                <button class="btn-buy btn-buy-center" data-name="Hoopy Blanche" data-price="280">Купить за 280 руб.</button>
                             </div>
                         </div>
                     </div>
@@ -145,7 +145,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Double Horizon</h5>
                                 <p class="card-text">Бескомпромиссный Двойной IPA для ценителей. Плотное солодовое тело скрывает высокую крепость, раскрываясь смолистыми, цитрусовыми и грейпфрутовыми оттенками американских хмелей.<br><br><strong>Характеристики: ABV: 8.2% | IBU: 85</strong></p>
-                                <a href="order.html" class="btn-buy btn-buy-center">Купить за 390 руб.</a>
+                                <button class="btn-buy btn-buy-center" data-name="Double Horizon" data-price="390">Купить за 390 руб.</button>
                             </div>
                         </div>
                     </div>
@@ -173,5 +173,6 @@
         </div>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
