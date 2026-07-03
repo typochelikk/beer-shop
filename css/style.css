@@ -484,18 +484,20 @@ body {
     color: #4a2f25 !important;
 }
 
-/* Ряд с большой кнопкой ЗАКАЗАТЬ (сдвигаем её в правый блок под чек) */
-.order-btn-row {
+/* Позиционируем кнопку внутри формы, сдвигая её вправо под чек */
+.order-btn-inside-form {
+    position: relative;
+    width: 215%; /* Хитрый трюк: заставляем блок стать шире формы и дотянуться до правого края */
     display: flex;
-    justify-content: flex-end; /* Улетает в правый край экрана */
-    width: 100%;
-    margin-top: 30px;
+    justify-content: flex-end;
+    margin-top: 40px;
 }
 
+/* Сама кнопка теперь подстраивается под этот блок */
 .btn-submit-order-large {
     background-color: #500C00;
     color: #d6a376;
-    width: 50%; /* Ширина кнопки теперь в точности равна ширине блока чека заказа */
+    width: 48%; /* Кнопка станет точно такой же ширины, как правый чек заказа */
     padding: 22px 0;
     font-size: 1.6rem;
     font-weight: normal;
