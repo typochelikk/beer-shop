@@ -9,11 +9,11 @@
 </head>
 <body>
 
-    <!-- ==================== ШАПКА САЙТА (NAVBAR) ==================== -->
+    <!-- ==================== ШАПКА САЙТА ==================== -->
     <nav class="custom-navbar">
         <div class="navbar-container">
             <a class="logo-link" href="index.html">
-                <img src="img/logo.png" alt="Логотип" height="120">
+                <img src="img/logo.png" alt="Логотип" height="140">
             </a>
             <div class="menu-links">
                 <a href="index.html">Главная</a>
@@ -22,8 +22,8 @@
                 <a href="#">Контакты</a>
             </div>
             <a href="order.html" class="cart-icon-link">🛒</a>
-            <form class="search-form">
-                <input type="search" placeholder="Поиск">
+            <form class="search-form" onsubmit="event.preventDefault();">
+                <input type="search" id="beer-search" placeholder="Поиск">
                 <button type="submit">Найти</button>
             </form>
         </div>
@@ -31,11 +31,13 @@
 
     <!-- ==================== ОСНОВНОЙ КОНТЕНТ ЗАКАЗА ==================== -->
     <main class="order-main-container">
-        <div class="order-flex-row">
+        <!-- Открываем форму, которая объединяет И поля, И кнопку "ЗАКАЗАТЬ" -->
+        <form class="order-form" id="order-form">
             
-            <!-- Левый блок: Форма данных -->
-            <div class="order-left-column">
-                <form class="order-form" id="order-form">
+            <div class="order-flex-row">
+                
+                <!-- Левый блок: Форма данных -->
+                <div class="order-left-column">
                     <div class="form-group-custom">
                         <input type="text" id="user-fio" placeholder="Введите ваше ФИО">
                     </div>
@@ -54,67 +56,65 @@
                         </select>
                     </div>
                     
-                    <!-- Интерактивные кнопки переключения БЕЗ JavaScript -->
-                    <div class="delivery-toggle-pure-css">
+                    <div class="delivery-toggle-pure-css mb-4">
                         <input type="radio" id="toggle-delivery" name="delivery-type" checked>
                         <label for="toggle-delivery" class="lbl-delivery">Доставка</label>
 
                         <input type="radio" id="toggle-pickup" name="delivery-type">
                         <label for="toggle-pickup" class="lbl-pickup">Самовывоз</label>
                     </div>
-
-                    <!-- Кнопка ЗАКАЗАТЬ строго под правым блоком -->
-                    <div class="order-btn-row">
-                        <button type="submit" class="btn-submit-order-large">ЗАКАЗАТЬ</button>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Правый блок: Чек заказа -->
-            <div class="order-right-column">
-                <div class="order-receipt-card">
-                    <div class="receipt-section font-weight-bold section-title">Ваш заказ:</div>
-                    <div class="receipt-section">
-                        <ul class="receipt-list mb-0" id="cart-items-list">
-                            <!-- Сюда JavaScript добавит выбранное пиво -->
-                        </ul>
-                    </div>
-                    <div class="receipt-section font-weight-bold" id="receipt-delivery">Доставка: 0 руб.</div>
-                    <div class="receipt-section font-weight-bold text-dark-brown" id="receipt-total">Итого: 0 руб.</div>
                 </div>
+
+                <!-- Правый блок: Чек заказа -->
+                <div class="order-right-column">
+                    <div class="order-receipt-card">
+                        <div class="receipt-section font-weight-bold section-title">Ваш заказ:</div>
+                        <div class="receipt-section">
+                            <ul class="receipt-list mb-0" id="cart-items-list">
+                                <!-- Сюда JavaScript добавляет товары -->
+                            </ul>
+                        </div>
+                        <div class="receipt-section font-weight-bold" id="receipt-delivery">Доставка: 300 руб.</div>
+                        <div class="receipt-section font-weight-bold text-dark-brown" id="receipt-total">Итого: 0 руб.</div>
+                    </div>
+                </div>
+
+            </div> <!-- Конец строки order-flex-row -->
+
+            <!-- Кнопка ЗАКАЗАТЬ внутри тега формы -->
+            <div class="order-btn-inside-form">
+                <button type="submit" class="btn-submit-order-large">ЗАКАЗАТЬ</button>
             </div>
 
-        </div> <!-- Конец строки order-flex-row -->
+        </form> <!-- Закрываем форму только здесь! -->
     </main>
 
-<!-- Модальное окно Bootstrap для вывода сообщений -->
-<div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content" style="background-color: #edd3c4; border: 2px solid #4a2f25;">
-      <div class="modal-header" style="border-bottom: 1px solid #4a2f25;">
-        <h5 class="modal-title font-weight-bold" id="modalTitle" style="color: #4a2f25;">Статус заказа</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" style="color: #4a2f25;">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body text-center font-weight-bold" id="modalBody" style="color: #331f18; font-size: 1.2rem;">
-        <!-- Сюда JavaScript будет подставлять текст -->
-      </div>
-      <div class="modal-footer" style="border-top: none;">
-        <!-- Изменили класс кнопки здесь: -->
-        <button type="button" class="btn-modal-close py-2 px-4" data-dismiss="modal" style="margin: 0 auto;">Отлично</button>
-      </div>
+    <!-- ==================== МОДАЛЬНОЕ ОКНО СТАТУСА ==================== -->
+    <div class="modal" id="statusModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background-color: #edd3c4; border: 2px solid #4a2f25; padding: 20px; margin-top: 100px;">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-bold" id="modalTitle" style="color: #4a2f25; margin: 0;">Статус заказа</h5>
+                    <button type="button" class="close" aria-label="Close">&times;</button>
+                </div>
+                <div class="modal-body text-center font-weight-bold" id="modalBody" style="color: #331f18; font-size: 1.2rem; padding: 20px 0;">
+                    <!-- Сюда подставится текст ошибки или успеха -->
+                </div>
+                <div class="modal-footer" style="justify-content: center; border: none;">
+                    <button type="button" class="btn-modal-close py-2 px-5">Отлично</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
-    <!-- ==================== ПОДВАЛ САЙТА (FOOTER) ==================== -->
+    <!-- ==================== ПОДВАЛ САЙТА ==================== -->
     <footer class="custom-footer text-white text-center py-4 mt-5">
         <div class="container">
             <p class="mb-0">&copy; 2026 Магазин крафтового пива "Craft Beer". Чрезмерное употребление алкоголя вредит вашему здоровью</p>
         </div>
     </footer>
 
+    <!-- Подключаем только скрипт логики -->
     <script src="script.js"></script>
 </body>
 </html>
