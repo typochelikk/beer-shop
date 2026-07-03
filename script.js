@@ -1,110 +1,35 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // ==========================================
-    // 1. ЖИВОЙ ПОИСК И КНОПКА «НАЙТИ»
-    // ==========================================
-    const searchInput = document.getElementById('beer-search');
-    const searchForm = document.querySelector('.search-form');
-    const beerCards = document.querySelectorAll('.beer-card');
-
-    function executeSearch() {
-        if (!searchInput) return;
-        const query = searchInput.value.toLowerCase().trim();
-        beerCards.forEach(card => {
-            const beerName = card.querySelector('.card-title').textContent.toLowerCase();
-            if (beerName.includes(query)) {
-                card.parentElement.style.display = "block";
-            } else {
-                card.parentElement.style.display = "none";
-            }
-        });
-    }
-
-    if (searchInput) searchInput.addEventListener('input', executeSearch);
-    if (searchForm) {
-        searchForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            executeSearch();
-        });
-    }
-
-    // ==========================================
-    // 2. ФИЛЬТРЫ СТИЛЯ И КРЕПОСТИ
-    // ==========================================
-    const checkboxes = document.querySelectorAll('.filter-checkbox input');
-    const radios = document.querySelectorAll('input[name="abv-group"]');
-
-    function applyFilters() {
-        if (checkboxes.length === 0 && radios.length === 0) return;
-
-        let activeStyles = [];
-        checkboxes.forEach(box => { if (box.checked) activeStyles.push(box.id); });
-
-        let selectedAbv = "all";
-        radios.forEach(radio => { if (radio.checked) selectedAbv = radio.id; });
-
-        beerCards.forEach(card => {
-            const cardText = card.querySelector('.card-text').textContent;
-            const beerTitle = card.querySelector('.card-title').textContent.toLowerCase();
-            
-            let matchesStyle = activeStyles.length === 0;
-            activeStyles.forEach(style => {
-                if (beerTitle.includes(style) || cardText.toLowerCase().includes(style)) {
-                    matchesStyle = true;
-                }
-            });
-
-            let matchesAbv = true;
-            const abvMatch = cardText.match(/ABV:\s*([0-9.]+)/);
-            if (abvMatch && selectedAbv !== "abv-all") {
-                const abvValue = parseFloat(abvMatch[1]);
-                if (selectedAbv === "abv-light" && abvValue > 5.0) matchesAbv = false;
-                if (selectedAbv === "abv-strong" && abvValue <= 5.0) matchesAbv = false;
-            }
-
-            card.parentElement.style.display = (matchesStyle && matchesAbv) ? "block" : "none";
-        });
-    }
-
-    checkboxes.forEach(box => box.addEventListener('change', applyFilters));
-    radios.forEach(radio => radio.addEventListener('change', applyFilters));
-
-    // ==========================================
-    // 3. СВЕРХИНТЕРАКТИВНАЯ КОРЗИНА И УПРАВЛЕНИЕ ТОВАРАМИ
-    // ==========================================
-    
+    // === 1. ВНУТРЕННЯЯ ПАМЯТЬ КОРЗИНЫ ===
     function getCart() {
         return JSON.parse(localStorage.getItem('beer_cart')) || [];
     }
 
     function saveCart(cart) {
         localStorage.setItem('beer_cart', JSON.stringify(cart));
-        renderCartReceipt(); // Перерисовываем чек при любых изменениях
+        renderCartReceipt(); 
     }
 
-    // Добавление товара из каталога
+    // === 2. КНОПКИ КУПИТЬ В КАТАЛОГЕ ===
     const buyButtons = document.querySelectorAll('.btn-buy');
     buyButtons.forEach(btn => {
-        // Защита: проверяем, что кнопка имеет атрибут данных товара и это не кнопка заказа
-        if (btn.hasAttribute('data-name') && !btn.classList.contains('btn-submit-order-large')) {
+        if (btn.hasAttribute('data-name')) {
             btn.addEventListener('click', function (e) {
                 e.preventDefault();
                 const beerName = this.getAttribute('data-name');
                 const beerPrice = parseInt(this.getAttribute('data-price'));
 
                 let cart = getCart();
-                // Ищем, есть ли уже такое пиво в корзине
                 const existingItem = cart.find(item => item.name === beerName);
 
                 if (existingItem) {
-                    existingItem.quantity += 1; // Увеличиваем счетчик количества
+                    existingItem.quantity += 1;
                 } else {
-                    cart.push({ name: beerName, price: beerPrice, quantity: 1 }); // Добавляем новый сорт
+                    cart.push({ name: beerName, price: beerPrice, quantity: 1 });
                 }
 
                 saveCart(cart);
 
-                // Визуальный отклик на кнопке
                 const originalText = this.textContent;
                 this.textContent = "✔ Добавлено!";
                 this.style.backgroundColor = "#2b1f1d";
@@ -116,10 +41,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Функция отрисовки и интерактивного управления внутри чека заказа
+    // === 3. ОТРИСОВКА ЧЕКА В КОРЗИНЕ ===
     function renderCartReceipt() {
         const cartListElement = document.getElementById('cart-items-list');
-        if (!cartListElement) return; // Если мы не на странице заказа, выходим
+        if (!cartListElement) return;
 
         const cart = getCart();
         const deliveryElement = document.getElementById('receipt-delivery');
@@ -132,13 +57,12 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        cartListElement.innerHTML = ""; // Очищаем старый список
+        cartListElement.innerHTML = "";
         let goodsSum = 0;
 
         cart.forEach((item, index) => {
             goodsSum += item.price * item.quantity;
 
-            // Создаем красивую интерактивную строчку для каждого товара
             const li = document.createElement('li');
             li.className = "d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom-dashed";
             li.innerHTML = `
@@ -147,20 +71,15 @@ document.addEventListener('DOMContentLoaded', function () {
                     <span class="text-muted" style="font-size: 0.9rem;">(${item.price} руб./шт.)</span>
                 </div>
                 <div class="cart-item-controls d-flex align-items-center">
-                    <!-- Кнопка минус -->
-                    <button class="btn-qty-minus btn btn-sm btn-outline-secondary px-2 py-0 font-weight-bold" data-index="${index}">-</button>
-                    <!-- Количество -->
+                    <button type="button" class="btn-qty-minus btn btn-sm btn-outline-secondary px-2 py-0 font-weight-bold" data-index="${index}">-</button>
                     <span class="mx-3 font-weight-bold" style="font-size: 1.1rem; color: #331f18;">${item.quantity} шт.</span>
-                    <!-- Кнопка плюс -->
-                    <button class="btn-qty-plus btn btn-sm btn-outline-secondary px-2 py-0 font-weight-bold" data-index="${index}">+</button>
-                    <!-- Кнопка полного удаления -->
-                    <button class="btn-qty-del btn btn-sm btn-danger ml-3 px-2 py-0" data-index="${index}" style="font-size: 0.8rem;">&times; Удалить</button>
+                    <button type="button" class="btn-qty-plus btn btn-sm btn-outline-secondary px-2 py-0 font-weight-bold" data-index="${index}">+</button>
+                    <button type="button" class="btn-qty-del btn btn-sm btn-danger ml-3 px-2 py-0" data-index="${index}" style="font-size: 0.8rem;">&times; Удалить</button>
                 </div>
             `;
             cartListElement.appendChild(li);
         });
 
-        // Расчет стоимости доставки на основе выбранной радиокнопки
         const pickupRadio = document.getElementById('toggle-pickup');
         let deliveryPrice = (pickupRadio && pickupRadio.checked) ? 0 : 300;
 
@@ -168,8 +87,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (totalElement) totalElement.textContent = `Итого: ${goodsSum + deliveryPrice} руб.`;
     }
 
-    // Слушаем клики внутри чека по кнопкам изменения количества (+ / - / удалить)
-    cartListElement = document.getElementById('cart-items-list');
+    // Слушатель кликов по кнопкам количества внутри чека
+    const cartListElement = document.getElementById('cart-items-list');
     if (cartListElement) {
         cartListElement.addEventListener('click', function (e) {
             let cart = getCart();
@@ -178,41 +97,37 @@ document.addEventListener('DOMContentLoaded', function () {
             if (isNaN(index)) return;
 
             if (e.target.classList.contains('btn-qty-plus')) {
-                cart[index].quantity += 1; // Кликнули на плюс
+                cart[index].quantity += 1;
                 saveCart(cart);
             } 
             else if (e.target.classList.contains('btn-qty-minus')) {
                 if (cart[index].quantity > 1) {
-                    cart[index].quantity -= 1; // Кликнули на минус (уменьшаем, если больше 1)
+                    cart[index].quantity -= 1;
                 } else {
-                    cart.splice(index, 1); // Если был 1 шт, то при нажатии на минус — полностью удаляем
+                    cart.splice(index, 1);
                 }
                 saveCart(cart);
             } 
             else if (e.target.classList.contains('btn-qty-del')) {
-                cart.splice(index, 1); // Кликнули на кнопку "Удалить"
+                cart.splice(index, 1);
                 saveCart(cart);
             }
         });
 
-        // Слушаем переключение радиокнопок доставки для мгновенного обновления суммы чека
         const deliveryRadios = document.querySelectorAll('input[name="delivery-type"]');
         deliveryRadios.forEach(radio => {
             radio.addEventListener('change', renderCartReceipt);
         });
     }
 
-    // Вызываем отрисовку корзины при первичной загрузке страницы заказа
     renderCartReceipt();
 
-    // ==========================================
-    // 4. ВАЛИДАЦИЯ И ОТПРАВКА ЗАКАЗА
-    // ==========================================
-        const orderForm = document.getElementById('order-form');
+    // === 4. НАЖАТИЕ НА КНОПКУ ЗАКАЗАТЬ ===
+    const orderForm = document.getElementById('order-form');
     
     if (orderForm) {
         orderForm.addEventListener('submit', function (event) {
-            event.preventDefault();
+            event.preventDefault(); // Запрещаем перезагрузку страницы!
 
             const fioInput = document.getElementById('user-fio');
             const phoneInput = document.getElementById('user-phone');
@@ -222,6 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const modalBody = document.getElementById('modalBody');
             const modalTitle = document.getElementById('modalTitle');
 
+            // Если корзина пустая
             if (cart.length === 0) {
                 modalTitle.textContent = "Ваша корзина пуста";
                 modalBody.innerHTML = "⚠️ Невозможно оформить заказ. Пожалуйста, вернитесь в каталог и выберите товары.";
@@ -230,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            const phoneRegex = /^(?:\+7|8)?[\s\-]?\(?\d{3}\)?[\s\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}$/;
+            // Валидация полей
             let isValid = true;
             let errorMessage = "";
 
@@ -242,21 +158,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 isValid = false;
                 errorMessage += "Поле 'Адрес' обязательно для заполнения.<br>";
             }
-            if (!phoneRegex.test(phoneInput.value.trim())) {
+            if (!phoneInput.value.trim()) {
                 isValid = false;
-                errorMessage += "Введите корректный номер мобильного телефона.<br>";
+                errorMessage += "Введите ваш номер мобильного телефона.<br>";
             }
 
-            console.log("--- Валидация оформления заказа ---");
-            console.log("ФИО:", fioInput.value.trim());
-            console.log("Телефон:", phoneInput.value.trim());
-            console.log("Адрес:", addressInput.value.trim());
-            console.log("Товары в заказе:", cart);
-            console.log("Статус валидации:", isValid ? "Успешно" : "Ошибка");
-
+            // Настройка вывода окна
             if (isValid) {
                 modalTitle.textContent = "Заказ успешно оформлен!";
-                modalBody.innerHTML = "🎉 Спасибо за заказ! Данные успешно обработаны. Логи отправлены в консоль (F12).";
+                modalBody.innerHTML = "🎉 Спасибо за заказ! Данные успешно обработаны и отправлены.";
                 localStorage.removeItem('beer_cart'); 
                 orderForm.reset();
                 renderCartReceipt(); 
@@ -265,6 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 modalBody.innerHTML = `⚠️ Найдена ошибка:<br><br>${errorMessage}`;
             }
 
+            // Показываем окно
             const statusModal = document.getElementById('statusModal');
             if (statusModal) {
                 statusModal.classList.add('show');
@@ -272,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ЛОГИКА ЗАКРЫТИЯ ОКНА ПРИ КЛИКЕ
+    // ЛОГИКА ЗАКРЫТИЯ ОКНА
     const statusModalInstance = document.getElementById('statusModal');
     if (statusModalInstance) {
         statusModalInstance.addEventListener('click', function (e) {
@@ -282,4 +193,3 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
-
