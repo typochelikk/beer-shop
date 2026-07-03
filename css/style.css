@@ -486,18 +486,23 @@ body {
 
 /* Позиционируем кнопку внутри формы, сдвигая её вправо под чек */
 .order-btn-inside-form {
-    position: relative;
-    width: 215%; /* Хитрый трюк: заставляем блок стать шире формы и дотянуться до правого края */
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-end; /* Сдвигает кнопку в правый край */
+    width: 100%;
     margin-top: 40px;
+    /* Разрешаем кнопке выходить за пределы левой колонки: */
+    grid-column: 1 / -1; 
+    clear: both;
 }
 
-/* Сама кнопка теперь подстраивается под этот блок */
+/* Сама кнопка "ЗАКАЗАТЬ" */
 .btn-submit-order-large {
     background-color: #500C00;
     color: #d6a376;
-    width: 48%; /* Кнопка станет точно такой же ширины, как правый чек заказа */
+    
+    /* Делаем ширину кнопки точно такой же, как ширина чека заказа (50% от всей ширины экрана): */
+    width: 50% !important; 
+    
     padding: 22px 0;
     font-size: 1.6rem;
     font-weight: normal;
@@ -523,14 +528,26 @@ main {
 .btn-modal-close {
     background-color: #500C00;
     color: #d6a376;
-    border-radius: 4px;
+    border-radius: 8px;
     font-weight: bold;
     border: none;
     cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+
+    /* НАСТРОЙКА РАЗМЕРА: */
+    font-size: 1.4rem;
+    padding: 16px 70px;
+    display: inline-block;
 }
+
 .btn-modal-close:hover {
     background-color: #d6a376;
     color: #500C00;
+}
+
+/* Эффект легкого клика при нажатии */
+.btn-modal-close:active {
+    transform: scale(0.98);
 }
 
 
